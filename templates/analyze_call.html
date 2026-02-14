@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call Analysis - ScamShield</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        header {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #764ba2;
+            margin-bottom: 10px;
+        }
+        
+        .nav-links {
+            margin-top: 15px;
+        }
+        
+        .nav-links a {
+            color: #764ba2;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+        
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .analysis-form {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: bold;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: #764ba2;
+        }
+        
+        .form-hint {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .btn:hover {
+            transform: scale(1.02);
+        }
+        
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #764ba2;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .result-container {
+            display: none;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .alert-box {
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 5px solid;
+        }
+        
+        .alert-critical {
+            background: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+        
+        .alert-high {
+            background: #ffe5d0;
+            border-color: #fd7e14;
+            color: #8b4513;
+        }
+        
+        .alert-medium {
+            background: #fff3cd;
+            border-color: #ffc107;
+            color: #856404;
+        }
+        
+        .alert-low {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+        
+        .risk-score {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .score-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 15px;
+        }
+        
+        .info-section {
+            margin: 30px 0;
+        }
+        
+        .info-section h3 {
+            color: #764ba2;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #764ba2;
+            padding-bottom: 10px;
+        }
+        
+        .info-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .info-list li {
+            padding: 10px;
+            margin-bottom: 8px;
+            background: #f8f9fa;
+            border-radius: 5px;
+            border-left: 3px solid #764ba2;
+        }
+        
+        .info-list li:before {
+            content: "• ";
+            color: #764ba2;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📞 Call Pattern Analysis</h1>
+            <p>Analyze call metadata for potential scam indicators</p>
+            <div class="nav-links">
+                <a href="/">🏠 Home</a>
+                <a href="/analyze_sms">💬 SMS Analysis</a>
+                <a href="/report">📊 Reports</a>
+            </div>
+        </header>
+        
+        <div class="analysis-form">
+            <h2 style="color: #764ba2; margin-bottom: 25px;">Enter Call Details</h2>
+            
+            <form id="callForm">
+                <div class="form-group">
+                    <label for="phone_number">📱 Phone Number *</label>
+                    <input type="text" id="phone_number" name="phone_number" required 
+                           placeholder="e.g., +1-555-123-4567 or 555-123-4567">
+                    <div class="form-hint">Enter the calling number (can include country code)</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="duration">⏱️ Call Duration (seconds) *</label>
+                    <input type="number" id="duration" name="duration" min="0" max="3600" value="30" required>
+                    <div class="form-hint">How long did the call last?</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="call_frequency">🔢 Call Frequency (last 24h) *</label>
+                    <input type="number" id="call_frequency" name="call_frequency" min="1" max="50" value="1" required>
+                    <div class="form-hint">How many times has this number called you today?</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="is_unknown">👤 Number Recognition *</label>
+                    <select id="is_unknown" name="is_unknown" required>
+                        <option value="true">Unknown (not in contacts)</option>
+                        <option value="false">Known (in contacts)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="time_of_day">🕐 Time of Call *</label>
+                    <select id="time_of_day" name="time_of_day" required>
+                        <option value="business_hours">Business Hours (9am-5pm)</option>
+                        <option value="evening">Evening (5pm-9pm)</option>
+                        <option value="night">Night (9pm-12am)</option>
+                        <option value="early_morning">Early Morning (12am-6am)</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn" id="analyzeBtn">
+                    🔍 Analyze Call
+                </button>
+                
+                <div class="error-message" id="errorMessage"></div>
+            </form>
+            
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p style="margin-top: 15px; color: #666;">Analyzing call pattern...</p>
+            </div>
+        </div>
+        
+        <div class="result-container" id="results">
+            <!-- Results will be inserted here -->
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('callForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                phone_number: document.getElementById('phone_number').value,
+                duration: parseInt(document.getElementById('duration').value),
+                call_frequency: parseInt(document.getElementById('call_frequency').value),
+                is_unknown: document.getElementById('is_unknown').value === 'true',
+                time_of_day: document.getElementById('time_of_day').value
+            };
+            
+            // Show loading
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('analyzeBtn').disabled = true;
+            document.getElementById('results').style.display = 'none';
+            document.getElementById('errorMessage').style.display = 'none';
+            
+            try {
+                const response = await fetch('/api/analyze_call', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const data = await response.json();
+                
+                if (!response.ok) {
+                    throw new Error(data.error || 'Analysis failed');
+                }
+                
+                displayResults(data);
+                
+            } catch (error) {
+                document.getElementById('errorMessage').textContent = error.message;
+                document.getElementById('errorMessage').style.display = 'block';
+            } finally {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('analyzeBtn').disabled = false;
+            }
+        });
+        
+        function displayResults(data) {
+            const alert = data.alert;
+            const analysis = data.analysis;
+            
+            const riskColors = {
+                'CRITICAL': '#dc3545',
+                'HIGH': '#fd7e14',
+                'MEDIUM': '#ffc107',
+                'LOW': '#28a745'
+            };
+            
+            const alertClasses = {
+                'CRITICAL': 'alert-critical',
+                'HIGH': 'alert-high',
+                'MEDIUM': 'alert-medium',
+                'LOW': 'alert-low'
+            };
+            
+            const resultsHTML = `
+                <div class="alert-box ${alertClasses[alert.alert_level]}">
+                    <h2>${alert.title}</h2>
+                    <p style="font-size: 1.1em; margin-top: 10px;">${alert.message}</p>
+                </div>
+                
+                <div class="risk-score">
+                    <div class="score-circle" style="background: ${riskColors[alert.alert_level]}">
+                        ${Math.round(alert.risk_score)}
+                    </div>
+                    <h3>Risk Score: ${alert.risk_score.toFixed(2)}/100</h3>
+                    <p style="font-size: 1.2em; font-weight: bold; color: ${riskColors[alert.alert_level]}">
+                        ${alert.alert_level} RISK
+                    </p>
+                    <p style="margin-top: 10px; font-size: 1.1em;">
+                        <strong>Recommended Action:</strong> ${alert.recommended_action}
+                    </p>
+                </div>
+                
+                <div class="info-section">
+                    <h3>📋 Call Analysis Details</h3>
+                    <ul class="info-list">
+                        <li><strong>Phone Number:</strong> ${data.formatted_number}</li>
+                        <li><strong>Duration:</strong> ${analysis.duration} seconds</li>
+                        <li><strong>Call Frequency:</strong> ${analysis.call_frequency} call(s) in 24h</li>
+                        <li><strong>International:</strong> ${analysis.is_international ? 'Yes' : 'No'}</li>
+                        <li><strong>In Contacts:</strong> ${analysis.is_unknown ? 'No' : 'Yes'}</li>
+                        <li><strong>Scam Detected:</strong> ${analysis.is_scam ? 'YES ⚠️' : 'NO ✅'}</li>
+                    </ul>
+                </div>
+                
+                <div class="info-section">
+                    <h3>🔍 Risk Factors Detected</h3>
+                    <ul class="info-list">
+                        ${alert.explanation.map(exp => `<li>${exp}</li>`).join('')}
+                    </ul>
+                </div>
+                
+                <div class="info-section">
+                    <h3>💡 Safety Recommendations</h3>
+                    <ul class="info-list">
+                        ${alert.recommendations.map(rec => `<li>${rec}</li>`).join('')}
+                    </ul>
+                </div>
+                
+                <div class="info-section">
+                    <h3>🎓 Scam Awareness Tips</h3>
+                    <ul class="info-list">
+                        ${alert.safety_tips.map(tip => `<li>${tip}</li>`).join('')}
+                    </ul>
+                </div>
+                
+                <button class="btn" onclick="location.reload()">Analyze Another Call</button>
+            `;
+            
+            document.getElementById('results').innerHTML = resultsHTML;
+            document.getElementById('results').style.display = 'block';
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

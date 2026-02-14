@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risk Reports - ScamShield</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #764ba2;
+            margin-bottom: 10px;
+        }
+        
+        .nav-links {
+            margin-top: 15px;
+        }
+        
+        .nav-links a {
+            color: #764ba2;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+        
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #764ba2;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 1em;
+        }
+        
+        .section-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .section-card h2 {
+            color: #764ba2;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #764ba2;
+            padding-bottom: 10px;
+        }
+        
+        .risk-distribution {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .risk-item {
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .risk-critical { background: #dc3545; }
+        .risk-high { background: #fd7e14; }
+        .risk-medium { background: #ffc107; color: #333; }
+        .risk-low { background: #28a745; }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        th {
+            background: #764ba2;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .risk-badge {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .badge-critical { background: #dc3545; }
+        .badge-high { background: #fd7e14; }
+        .badge-medium { background: #ffc107; color: #333; }
+        .badge-low { background: #28a745; }
+        
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+        
+        .empty-state-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📊 Risk Analysis Reports</h1>
+            <p>View detection history and statistics</p>
+            <div class="nav-links">
+                <a href="/">🏠 Home</a>
+                <a href="/analyze_call">📞 Call Analysis</a>
+                <a href="/analyze_sms">💬 SMS Analysis</a>
+            </div>
+        </header>
+        
+        <h2 style="color: white; text-align: center; margin-bottom: 20px; font-size: 2em;">📈 30-Day Statistics</h2>
+        
+        <div class="stats-grid">
+            {% set total_calls = stats.get('call', {}).get('total', 0) %}
+            {% set total_sms = stats.get('sms', {}).get('total', 0) %}
+            {% set total_analyzed = total_calls + total_sms %}
+            {% set scam_calls = stats.get('call', {}).get('scams', 0) %}
+            {% set scam_sms = stats.get('sms', {}).get('scams', 0) %}
+            {% set total_scams = scam_calls + scam_sms %}
+            
+            <div class="stat-card">
+                <div class="stat-number">{{ total_analyzed }}</div>
+                <div class="stat-label">Total Analyzed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">{{ total_scams }}</div>
+                <div class="stat-label">Threats Detected</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">{{ total_analyzed - total_scams }}</div>
+                <div class="stat-label">Safe Communications</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">
+                    {% if total_analyzed > 0 %}
+                        {{ ((total_scams / total_analyzed) * 100) | round(1) }}%
+                    {% else %}
+                        0%
+                    {% endif %}
+                </div>
+                <div class="stat-label">Detection Rate</div>
+            </div>
+        </div>
+        
+        <div class="section-card">
+            <h2>🎯 Risk Level Distribution</h2>
+            <div class="risk-distribution">
+                <div class="risk-item risk-critical">
+                    <div style="font-size: 2em;">{{ risk_distribution.get('CRITICAL', 0) }}</div>
+                    <div>CRITICAL</div>
+                </div>
+                <div class="risk-item risk-high">
+                    <div style="font-size: 2em;">{{ risk_distribution.get('HIGH', 0) }}</div>
+                    <div>HIGH</div>
+                </div>
+                <div class="risk-item risk-medium">
+                    <div style="font-size: 2em;">{{ risk_distribution.get('MEDIUM', 0) }}</div>
+                    <div>MEDIUM</div>
+                </div>
+                <div class="risk-item risk-low">
+                    <div style="font-size: 2em;">{{ risk_distribution.get('LOW', 0) }}</div>
+                    <div>LOW</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-card">
+            <h2>📞 Recent Call Analyses</h2>
+            {% if recent_calls %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date/Time</th>
+                            <th>Phone Number</th>
+                            <th>Duration</th>
+                            <th>Risk Score</th>
+                            <th>Risk Level</th>
+                            <th>Scam?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for call in recent_calls %}
+                        <tr>
+                            <td>{{ call.timestamp | format_datetime }}</td>
+                            <td>{{ call.phone_number }}</td>
+                            <td>{{ call.duration }}s</td>
+                            <td>{{ call.risk_score | round(1) }}/100</td>
+                            <td>
+                                <span class="risk-badge badge-{{ call.risk_level.lower() }}">
+                                    {{ call.risk_level }}
+                                </span>
+                            </td>
+                            <td>{{ 'YES ⚠️' if call.is_scam else 'NO ✅' }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <div class="empty-state">
+                    <div class="empty-state-icon">📞</div>
+                    <p>No call analyses yet. <a href="/analyze_call">Analyze your first call</a></p>
+                </div>
+            {% endif %}
+        </div>
+        
+        <div class="section-card">
+            <h2>💬 Recent SMS Analyses</h2>
+            {% if recent_sms %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date/Time</th>
+                            <th>Sender</th>
+                            <th>Message Preview</th>
+                            <th>Risk Score</th>
+                            <th>Risk Level</th>
+                            <th>Scam?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for sms in recent_sms %}
+                        <tr>
+                            <td>{{ sms.timestamp | format_datetime }}</td>
+                            <td>{{ sms.sender }}</td>
+                            <td style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                {{ sms.message_text[:50] }}{% if sms.message_text|length > 50 %}...{% endif %}
+                            </td>
+                            <td>{{ sms.risk_score | round(1) }}/100</td>
+                            <td>
+                                <span class="risk-badge badge-{{ sms.risk_level.lower() }}">
+                                    {{ sms.risk_level }}
+                                </span>
+                            </td>
+                            <td>{{ 'YES ⚠️' if sms.is_scam else 'NO ✅' }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <div class="empty-state">
+                    <div class="empty-state-icon">💬</div>
+                    <p>No SMS analyses yet. <a href="/analyze_sms">Analyze your first message</a></p>
+                </div>
+            {% endif %}
+        </div>
+        
+        <div class="section-card">
+            <h2>📌 Key Insights</h2>
+            <ul style="line-height: 2; color: #666;">
+                <li>✅ <strong>Total threats blocked:</strong> {{ total_scams }} potential scams detected</li>
+                <li>📊 <strong>Most common risk level:</strong> 
+                    {% set max_risk = risk_distribution.values() | list | max | default(0) %}
+                    {% for level, count in risk_distribution.items() %}
+                        {% if count == max_risk and count > 0 %}{{ level }}{% endif %}
+                    {% endfor %}
+                </li>
+                <li>📈 <strong>Analysis trend:</strong> System is actively protecting you</li>
+                <li>🛡️ <strong>Protection status:</strong> ScamShield is monitoring effectively</li>
+            </ul>
+        </div>
+        
+        <footer style="background: white; padding: 20px; border-radius: 10px; text-align: center; color: #666;">
+            <p>&copy; 2024 ScamShield - Your AI-Powered Defense Against Scams</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">
+                All data is stored locally and encrypted for your privacy
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

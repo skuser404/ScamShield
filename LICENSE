@@ -1,0 +1,52 @@
+MIT License
+
+Copyright (c) 2024 ScamShield Project
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+DISCLAIMER:
+
+This software is provided for EDUCATIONAL and RESEARCH purposes only. 
+ScamShield is designed as a defensive security tool to help users identify 
+potential scam communications.
+
+This software does NOT:
+- Intercept phone calls or messages without user consent
+- Perform any offensive security operations
+- Violate any laws or regulations
+- Guarantee 100% accuracy in scam detection
+
+Users are responsible for:
+- Using this software in compliance with local laws
+- Making their own judgments about communication safety
+- Reporting suspected scams to appropriate authorities
+- Understanding the limitations of automated detection
+
+The authors and contributors are not liable for:
+- Missed scam detections (false negatives)
+- Incorrectly flagged legitimate communications (false positives)
+- Any damages resulting from use of this software
+- Actions taken based on the software's recommendations
+
+For actual scam incidents, always contact:
+- Federal Trade Commission (FTC): https://reportfraud.ftc.gov
+- FBI Internet Crime Complaint Center (IC3): https://www.ic3.gov
+- Local law enforcement authorities

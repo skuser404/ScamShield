@@ -1,0 +1,91 @@
+message_text,sender,length,word_count,exclamation_count,question_count,uppercase_ratio,digit_count,scam_keyword_count,has_urls,url_count,has_urgency,requests_action,mentions_money,mentions_account,has_threat,is_scam
+"URGENT: Your bank account has been suspended! Click here to verify: http://bit.ly/bank123",12345,91,13,1,0,0.11,5,4,1,1,1,1,1,1,1,1
+"Hi John, your package will be delivered tomorrow between 2-5pm. Track: https://fedex.com/track/abc123",FedEx,104,14,0,0,0.02,5,0,1,1,0,0,0,0,0,0
+"You have won $10000 cash prize! Claim now at winner-prize.tk/claim?id=999 Limited time!",88888,92,13,1,0,0.02,5,3,1,1,1,1,1,0,0,1
+"Your appointment reminder: Dr. Smith tomorrow at 3pm. Reply CONFIRM or call 555-1234 to reschedule.",Clinic,103,15,0,0,0.08,7,1,0,0,0,1,0,0,0,0
+"FINAL NOTICE: Unusual activity on your account. Verify immediately or face suspension http://secure-bank-verify.tk",55555,115,14,1,0,0.24,0,5,1,1,1,1,0,1,1,1
+"Thank you for your order #12345. Your total is $49.99. Track delivery: https://amazon.com/order/12345",Amazon,104,14,0,0,0.03,10,0,1,1,0,0,1,0,0,0
+"IRS ALERT: You owe back taxes! Pay immediately to avoid arrest warrant. Call 888-555-9999 NOW!",Gov,95,15,2,0,0.35,7,5,0,0,1,1,1,0,1,1
+"Your verification code is 492816. Do not share this code with anyone. Valid for 10 minutes.",Service,94,15,0,0,0.05,7,1,0,0,0,0,0,0,0,0
+"CONGRATULATIONS! You're selected for FREE iPhone 15! Click: http://free-iphone.xyz/winner?u=12345",77777,99,10,2,0,0.23,4,2,1,1,0,1,1,0,0,1
+"Hi, this is Sarah from your credit card company. Please confirm your account details at our secure portal.",unknown,110,18,0,0,0.02,0,2,0,0,0,1,0,1,0,1
+"Your prescription is ready for pickup at CVS Pharmacy. Store hours: 9am-9pm. Questions? Call 555-2345",CVS,104,15,0,1,0.07,9,0,0,0,0,0,0,0,0,0
+"URGENT SECURITY ALERT! Unauthorized login detected. Reset password now: http://192.168.1.1/reset",Security,98,11,2,0,0.34,8,3,1,1,1,1,0,0,0,1
+"Meeting rescheduled to Thursday 2pm. Conference room B. See you there!",Colleague,73,11,1,0,0.04,1,0,0,0,0,0,0,0,0,0
+"Your Amazon package delivery failed. Update shipping address: http://amzn-redelivery.tk/update?id=abc",Delivery,105,11,0,0,0.03,1,2,1,1,0,1,0,0,0,1
+"Reminder: Your car insurance payment of $150 is due on 15th. Pay online at our website or call us.",Insurance,101,18,0,0,0.04,3,1,1,0,0,0,1,0,0,0
+"LIMITED TIME OFFER! Get 50% discount on all products! Shop now: http://super-deals.xyz",Promo,88,13,2,0,0.32,2,1,1,1,1,1,0,0,0,1
+"Your flight UA123 is delayed by 2 hours. New departure time: 5:30pm. Check status: https://united.com",United,103,15,0,0,0.05,7,0,1,1,0,0,0,0,0,0
+"LAST CHANCE to claim your inheritance of $5 million dollars! Contact our law firm immediately!",Legal,96,14,1,0,0.24,1,3,0,0,1,1,1,0,0,1
+"Your Netflix subscription will expire in 3 days. Renew now to continue watching.",Netflix,84,13,0,0,0.04,1,1,0,0,0,0,0,0,0,0
+"PayPal Security: We've detected suspicious activity. Confirm your identity: http://paypal-secure.tk/login",PayPal,106,13,0,0,0.03,0,3,1,1,0,1,0,0,0,1
+"Happy birthday! 🎂 Hope you have an amazing day! Let's celebrate this weekend!",Friend,81,13,3,0,0.03,0,0,0,0,0,0,0,0,0,0
+"CRITICAL: Your computer is infected with virus! Download cleaner now: http://pc-cleaner.tk/download",Tech,99,13,2,0,0.26,0,2,1,1,0,1,0,0,0,1
+"Your table for 4 at Italian Garden is confirmed for Saturday 7pm. Reply to modify or cancel.",Restaurant,93,16,0,0,0.04,2,0,0,0,0,1,0,0,0,0
+"ACT NOW! Government stimulus check of $1200 waiting! Claim: http://govt-stimulus.tk/claim?ssn=",Govt,93,11,2,0,0.28,4,3,1,1,1,1,1,0,0,1
+"Your Uber ride with Sarah arrives in 3 minutes. Honda Civic - License ABC123.",Uber,78,13,0,0,0.05,4,0,0,0,0,0,0,0,0,0
+"FRAUD ALERT: $500 withdrawn from your account! Call 888-999-7777 immediately to stop transaction!",Bank,97,13,2,0,0.33,7,4,0,0,1,1,1,1,0,1
+"Your gym membership will auto-renew next week for $30. To cancel, visit our website or call us.",Fitness,96,16,0,0,0.03,2,1,0,0,0,0,1,0,0,0
+"You've been approved for a $50000 personal loan! No credit check! Apply: http://fast-loans.xyz",Loans,95,14,2,0,0.04,5,2,1,1,0,1,1,0,0,1
+"Weather alert: Heavy rain expected tomorrow. High 65F, Low 52F. Plan accordingly.",Weather,85,12,0,0,0.03,4,0,0,0,0,0,0,0,0,0
+"AMAZON ALERT: Order #12345 requires payment method update. Update now: http://amz-update-pay.tk",Amazon,96,12,1,0,0.29,5,3,1,1,1,1,1,0,0,1
+"Your dentist appointment is confirmed for Monday 10am. 123 Main St. Call 555-3456 to reschedule.",Dentist,100,15,0,0,0.05,9,0,0,0,0,1,0,0,0,0
+"WIN BIG! You're eligible for casino bonus $1000 FREE! Register: http://lucky-casino.tk/signup",Casino,93,12,2,0,0.30,4,2,1,1,0,1,1,0,0,1
+"Your package from Target has shipped. Expected delivery: Friday. Track: https://target.com/orders/abc",Target,102,13,0,0,0.03,0,0,1,1,0,0,0,0,0,0
+"Federal Tax Refund of $2450 approved! Claim within 24 hours: http://irs-refund.tk/claim?id=999",IRS,95,12,1,0,0.08,5,3,1,1,1,1,1,0,0,1
+"Thanks for your feedback! We value your opinion. Visit us again soon.",Support,71,12,1,0,0.04,0,0,0,0,0,0,0,0,0,0
+"BLOCKED: Your social security number suspended due to fraud! Call 877-555-1111 NOW to reactivate!",SSA,99,14,2,0,0.35,7,4,0,0,1,1,0,0,1,1
+"Your library books are due on Friday. Renew online at library.gov or return to any branch.",Library,92,16,0,0,0.03,0,0,1,0,0,0,0,0,0,0
+"EXCLUSIVE OFFER! Make $5000/week working from home! Limited spots: http://work-from-home.xyz",Job,93,11,2,0,0.32,4,2,1,1,1,1,1,0,0,1
+"Your blood test results are ready. Please log into the patient portal or call us at 555-4567.",Medical,95,17,0,0,0.03,7,0,0,0,0,1,0,0,0,0
+"LOCKED ACCOUNT: Suspicious login attempt. Verify identity immediately: http://verify-account.tk",Security,94,10,1,0,0.30,0,3,1,1,1,1,0,1,0,1
+"Your electricity bill of $87.50 is due on 20th. Pay online or set up autopay for convenience.",Utility,95,17,0,0,0.03,5,1,0,0,0,0,1,0,0,0
+"YOUR STIMULUS CHECK IS READY! $2000! Confirm details: http://covid-relief.tk/stimulus?ssn=",Govt,91,11,2,0,0.40,4,3,1,1,0,1,1,0,0,1
+"Practice reminder: Soccer practice moved to Wednesday 5pm. Fields on Maple Street. See you there!",Coach,100,15,1,0,0.04,1,0,0,0,0,0,0,0,0,0
+"BANK OF AMERICA: Unusual charges detected. Click to dispute: http://boa-secure.tk/dispute",BOA,88,11,1,0,0.36,0,3,1,1,0,1,0,0,0,1
+"Your reservation at Hampton Inn for June 15-17 is confirmed. Confirmation #: 789456",Hotel,86,13,0,0,0.03,7,0,0,0,0,0,0,0,0,0
+"Get rich quick! Bitcoin investment guaranteed returns! Invest now: http://crypto-fortune.xyz",Crypto,92,11,2,0,0.03,0,2,1,1,1,1,1,0,0,1
+"Your warranty claim has been approved. We'll ship the replacement part within 2 business days.",Company,94,14,0,0,0.03,1,0,0,0,0,0,0,0,0,0
+"MEDICARE ALERT: You qualify for back brace at no cost! Claim: http://medicare-supplies.tk",Medicare,90,13,1,0,0.32,0,2,1,1,0,1,0,0,0,1
+"Your podcast subscription renewed successfully. $9.99 charged to card ending in 1234.",Spotify,89,12,0,0,0.03,6,0,0,0,0,0,1,0,0,0
+"FINAL WARNING: Legal action pending! Settle debt of $8500 now: http://debt-settlement.tk",Collect,89,12,2,0,0.35,4,4,1,1,1,1,1,0,1,1
+"Your photos from graduation have been uploaded. View and download at our website.",Photos,81,12,0,0,0.03,0,0,0,0,0,0,0,0,0,0
+"Tax return assistance! Get maximum refund! Free consultation: http://tax-refund-max.tk",TaxHelp,87,10,3,0,0.03,0,2,1,1,0,1,1,0,0,1
+"Your dog's grooming appointment is scheduled for Tuesday 11am. Please arrive 10 minutes early.",PetSpa,98,14,0,0,0.03,3,0,0,0,0,0,0,0,0,0
+"APPLE ID LOCKED! Verify now to unlock: http://appleid-verify.tk/unlock?id=12345",Apple,79,10,1,0,0.42,5,2,1,1,1,1,0,0,1,1
+"Your subscription to The Times has been renewed for one year. Thank you for your continued support!",News,103,17,1,0,0.03,0,0,0,0,0,0,0,0,0,0
+"ROMANCE SCAM ALERT! Beautiful singles want to meet you! Chat now: http://dating-site.xyz",Dating,89,13,2,0,0.33,0,2,1,1,1,1,0,0,0,1
+"Your return has been processed. Refund of $45.20 will appear in 3-5 business days.",Returns,84,13,0,0,0.03,5,1,0,0,0,0,1,0,0,0
+"GOOGLE ALERT: Suspicious sign-in prevented. Change password immediately: http://google-security.tk",Google,97,10,1,0,0.32,0,3,1,1,1,1,0,0,0,1
+"Your child's school will be closed tomorrow due to weather. All activities cancelled.",School,89,13,0,0,0.03,0,0,0,0,0,0,0,0,0,0
+"Lottery winner! You won $25 million! Claim fee $500: http://lottery-claim.tk/pay",Lottery,81,12,2,0,0.03,6,2,1,1,0,1,1,0,0,1
+"Your prescription refill is approved. Pick up at pharmacy after 2pm today.",Pharmacy,76,12,0,0,0.03,1,0,0,0,0,0,0,0,0,0
+"URGENT: Package delivery attempted. Pay customs fee $25: http://customs-fee.tk/pay?id=abc",Customs,90,11,1,0,0.23,3,2,1,1,1,1,1,0,0,1
+"Movie night this Friday? Let me know if you're free. 7pm at my place.",Friend,71,14,1,0,0.03,1,0,0,0,0,0,0,0,0,0
+"CREDIT SCORE BOOST! Increase 200 points guaranteed! Sign up: http://credit-fix.xyz",Credit,82,11,2,0,0.35,3,2,1,1,0,1,0,0,0,1
+"Your takeout order is ready. Order #456. Please pick up at your convenience.",Takeout,77,13,0,0,0.03,3,0,0,0,0,0,0,0,0,0
+"FACEBOOK SECURITY: Unauthorized access detected! Reset password: http://fb-secure.tk/reset",Facebook,89,10,1,0,0.38,0,3,1,1,0,1,0,0,0,1
+"Your conference registration is confirmed. Event details sent to your email address.",Events,84,11,0,0,0.03,0,0,0,0,0,0,0,0,0,0
+"Make money fast! $10000 in 30 days! Proven method: http://get-rich.xyz/method",Money,76,12,2,0,0.03,7,2,1,1,1,1,1,0,0,1
+"Your survey response has been recorded. Thank you for participating in our research study.",Survey,90,13,0,0,0.03,0,0,0,0,0,0,0,0,0,0
+"WELLS FARGO: Debit card blocked due to fraud! Unblock: http://wellsfargo-unblock.tk",WF,82,11,1,0,0.39,0,3,1,1,0,1,0,0,1,1
+"Your class starts in 30 minutes. Room 205, Building A. Don't forget your textbook!",School,83,14,1,0,0.04,4,0,0,0,0,0,0,0,0,0
+"Government grant of $15000 approved! No repayment needed! Apply: http://free-grant.tk",Grant,84,11,2,0,0.03,5,2,1,1,1,1,1,0,0,1
+"Your document has been signed by all parties. Download the final copy from your dashboard.",DocuSign,93,14,0,0,0.03,0,0,0,0,0,0,0,0,0,0
+"AMAZON PRIME: Account suspended! Confirm payment method: http://prime-renewal.tk/confirm",Prime,87,10,1,0,0.40,0,3,1,1,0,1,1,0,1,1
+"Your booking at the spa for Saturday 3pm is confirmed. Enjoy your massage!",Spa,76,14,1,0,0.03,1,0,0,0,0,0,0,0,0,0
+"INHERITANCE NOTICE: Unclaimed $2 million estate. Contact attorney: http://estate-claim.tk",Attorney,89,10,1,0,0.34,1,2,1,1,0,1,1,0,0,1
+"Your submission has been received. We'll review and respond within 48 hours.",Support,78,11,0,0,0.03,2,0,0,0,0,0,0,0,0,0
+"PAYPAL WARNING: Payment dispute filed! Respond now or lose $350: http://paypal-dispute.tk",PayPal,90,12,2,0,0.37,3,3,1,1,1,1,1,0,1,1
+"Your project deadline reminder: Submit final report by end of day Thursday.",Work,77,12,0,0,0.03,0,0,0,0,0,0,0,0,0,0
+"COVID vaccine available! Free government program! Schedule: http://vaccine-schedule.tk",Health,82,9,2,0,0.17,0,2,1,1,0,1,1,0,0,1
+"Your login code is 847291. Use this to access your account. Code expires in 5 minutes.",Auth,85,15,0,0,0.03,6,0,0,0,0,0,0,1,0,0
+"MICROSOFT ALERT: Computer hacked! Install security update: http://ms-security-update.tk",Microsoft,87,10,1,0,0.39,0,3,1,1,0,1,0,0,0,1
+"Your book club meets next Tuesday 7pm. We're discussing 'The Silent Patient'. See you there!",BookClub,95,15,1,0,0.03,1,0,0,0,0,0,0,0,0,0
+"VISA CARD ALERT: Fraudulent charges! Verify transactions: http://visa-verify.tk/fraud",Visa,83,10,1,0,0.37,0,3,1,1,0,1,0,0,1,1
+"Your recipe submission was accepted! It will be featured in next month's newsletter.",Recipe,88,13,1,0,0.03,0,0,0,0,0,0,0,0,0,0
+"Miracle weight loss! Lose 30 pounds in 30 days! Order now: http://miracle-diet.xyz",Diet,82,13,2,0,0.03,4,2,1,1,1,1,0,0,0,1
+"Your volunteer shift is scheduled for Sunday 9am-12pm at the food bank. Thank you!",Volunteer,88,14,1,0,0.03,4,0,0,0,0,0,0,0,0,0
+"EBAY NOTICE: Payment required for item #12345. Pay now: http://ebay-payment.tk/pay",eBay,82,12,1,0,0.36,5,2,1,1,1,1,1,0,0,1
+"Your zoom meeting link for tomorrow's interview: https://zoom.us/j/123456789",HR,75,9,0,0,0.03,9,0,1,1,0,0,0,0,0,0
+"STUDENT LOAN FORGIVENESS! You qualify! Apply today: http://loan-forgiveness.tk",Loans,79,9,2,0,0.42,0,2,1,1,1,1,1,0,0,1
