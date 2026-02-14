@@ -268,9 +268,9 @@ if __name__ == '__main__':
     print("🛡️  ScamShield - AI-Powered Scam Detection System")
     print("="*60)
     print(f"Starting server...")
-    print(f"Dashboard will be available at: http://localhost:5001")
+    print(f"Dashboard will be available at: http://localhost:5002")
     print(f"Press CTRL+C to stop the server")
     print("="*60 + "\n")
     
     # Run app
-    app.run(host='0.0.0.0', port=5001, debug=True)
+    app.run(host='0.0.0.0', port=5002, debug=True)
