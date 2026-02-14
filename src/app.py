@@ -22,9 +22,17 @@ from src.utils import format_phone_number, get_risk_color, sanitize_text
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# Initialize Flask app
-app = Flask(__name__)
+# Get the project root directory (parent of src)
+project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Initialize Flask app with correct template and static paths
+app = Flask(__name__,
+            template_folder=os.path.join(project_root, 'templates'),
+            static_folder=os.path.join(project_root, 'static'))
 app.secret_key = 'scamshield_secret_key_2024'  # Change in production
+
+# Change to project root directory for relative paths
+os.chdir(project_root)
 
 # Initialize components
 call_analyzer = CallAnalyzer(model_path='models/call_model.pkl')
@@ -260,9 +268,9 @@ if __name__ == '__main__':
     print("🛡️  ScamShield - AI-Powered Scam Detection System")
     print("="*60)
     print(f"Starting server...")
-    print(f"Dashboard will be available at: http://localhost:5000")
+    print(f"Dashboard will be available at: http://localhost:5001")
     print(f"Press CTRL+C to stop the server")
     print("="*60 + "\n")
     
     # Run app
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5001, debug=True)
